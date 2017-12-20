@@ -6,7 +6,7 @@
 
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 TARGET = voronoi
 TEMPLATE = app
@@ -27,14 +27,17 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     src/robot.cpp \
-    src/potential.cpp
+    src/potential.cpp \
+    src/qcustomplot.cpp
 
 
 HEADERS += \
         mainwindow.h \
     src/robot.h \
     src/geometry.h \
-    src/potential.h
+    src/potential.h \
+    src/qcustomplot.h
+
 
 FORMS += \
         mainwindow.ui

@@ -62,19 +62,26 @@ void potential::gradient_phi(agent_state& robot,obstacle_list obstacles ,positio
        robot.att.x = beta_ * 2* ( robot.pos.x - target.x) ;
        robot.att.y = beta_ * 2* ( robot.pos.y - target.y) ;
 
-    //    std::cout<< "-------------" <<std::endl;
-    //    std::cout <<"k = " << robot.gain  <<std::endl;
-    //    std::cout <<"alpha = " << alpha  <<std::endl;
-    //    std::cout <<"gamma_ = " << gamma_  <<std::endl;
-    //    std::cout <<"beta = " << beta_<<std::endl;
-    //    std::cout << "attx = " <<  robot.att.x
-    //              << "  atty = " <<   robot.att.y<<std::endl;
+        std::cout<< "-------------" <<std::endl;
+        std::cout <<"k = " << robot.gain  <<std::endl;
+        std::cout <<"alpha = " << alpha  <<std::endl;
+        std::cout <<"gamma_ = " << gamma_  <<std::endl;
+        std::cout <<"beta = " << beta_<<std::endl;
+        std::cout << "attx = " <<  robot.att.x
+                  << "  atty = " <<   robot.att.y<<std::endl;
 
+        std::cout<< "-------------" <<std::endl;
+        std::cout<< "robotpose = " << robot.pos.x <<"," <<robot.pos.y <<std::endl;
+        std::cout<< "size"<<obstacles.size() <<std::endl;
+        std::cout<< "target = " << target.x <<"," <<target.y <<std::endl;
+        std::cout <<zigma(robot ,obstacles[0])<<std::endl;
 
        if(obstacles.size()>1){
-           for(unsigned int i=0;obstacles.size();i++){
+
+           for(unsigned int i=0;i<obstacles.size();i++){
                beta_l =1.0;
                h = zigma(robot ,obstacles[i]);
+
                rep.x =  h*gamma_ * robot.gain * (robot.pos.x-obstacles[i].position.x);
                rep.y =  h*gamma_ * robot.gain * (robot.pos.y-obstacles[i].position.y);
 
@@ -115,17 +122,3 @@ double potential::zigma(agent_state robot ,obstacle obs){
     return value1 * value2 * value3;
 }
 
-
-//double potential::phi(double x ,double y,agent_state robot , dot target){
-//    double dist ,dist2,value,beta_,k;
-//    dot data;
-//    data.x =x;
-//    data.y =y;
-//    k = robot.gain;
-//    dist = distance(data , target);
-//    dist2 = dist*dist;
-//    beta_ = this->beta(robot);
-//    value = pow(dist2,k)+beta_;
-//    value = dist2/pow(value,1/k);
-//    return value;
-//}

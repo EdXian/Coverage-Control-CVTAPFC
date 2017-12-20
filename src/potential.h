@@ -2,8 +2,9 @@
 #define POTENTIAL_H
 #include "geometry.h"
 #include "math.h"
-#include "robot.h"
-
+//#include "robot.h"
+#include "stdio.h"
+#include "iostream"
 
 typedef std::vector<obstacle> obstacle_list;
 
@@ -15,10 +16,10 @@ class potential
         void gradient_phi(agent_state& robot,obstacle_list obstacles ,position target);
         double k_gain;
 
-
+         double distance(position a,position b);
     private:
 
-        double distance(position a,position b);
+
         double gamma(agent_state robot , dot target);
 
 

@@ -4,14 +4,18 @@
 #include "potential.h"
 #include "vector"
 
+
+
 class robot
 {
     public:
         robot();
         agent_state robot_state;
-        std::vector<obstacle> obstacle_list;
-        void detect_obstacle();
-        //potential *p;
+        obstacle_list obstacles;
+
+        void detect_obstacle(obstacle_list& obstacles);
+        void clear_obstacle();
+        potential *p;
     private:
         void dynamics();
 
